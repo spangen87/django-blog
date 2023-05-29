@@ -186,7 +186,7 @@
         <!-- Modal content -->
         <div class="modal-content text-center">
             <h2>Topplista</h2>
-            <table class="table table-responsive table-striped text-center">
+            <table class="table table-responsive table-striped text-center" id="leaderboard-table">
                 <thead>
                     <tr>
                         <th>Namn</th>
@@ -204,7 +204,9 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <button id="btnCloseLeaderboard" class="close-button new-game">Close</button>
+            <p>Syns inte ditt resultat? Klicka på uppdatera nedan.</p>
+            <button id="refresh-leaderboard" class="new-game">UPPDATERA</button>
+            <button id="btnCloseLeaderboard" class="close-button new-game">STÄNG</button>
         </div>
     </div>
 
@@ -517,6 +519,11 @@
             gameFinishedModal.style.display = 'none';
             menuDiv.style.display = 'initial';
         };
+
+        // Refresh the leaderboard
+        document.getElementById('refresh-leaderboard').addEventListener('click', function () {
+            location.reload(); // Refresh the page
+        });
 
         // Event listener for the form submission
         document.getElementById('leaderboard-form').addEventListener('submit', function (event) {
