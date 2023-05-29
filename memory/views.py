@@ -11,9 +11,11 @@ def memory(request):
     Render the game
     """
     template = 'memory.html'
+    leaderboard = Leaderboard.objects.order_by('score', 'time')[:10]
 
     context = {
         'MEDIA_URL': settings.MEDIA_URL,
+        'leaderboard': leaderboard,
     }
 
     return render(request, template, context)
